@@ -13,9 +13,14 @@
   outputs = { self, nixpkgs, nixos-apple-silicon, ... }: {
     nixosConfigurations.nixbook = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
+      specialArgs = {
+        inherit nixos-apple-silicon;
+        hostname = "nixbook";
+        username = "eva";
+      };
       modules = [
         nixos-apple-silicon.nixosModules.apple-silicon-support
-        ./configuration.nix
+        ./hosts/nixbook.nix
       ];
     };
   };
