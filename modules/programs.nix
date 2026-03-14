@@ -21,35 +21,7 @@
     };
   };
 
-  programs.git = {
-    enable = true;
-    config = {
-      user = {
-        name = "Eva Valentine";
-        email = "stephanie.howanietz@pm.me";
-        signingkey = "~/.ssh/id_ed25519.pub";
-      };
-      commit.gpgsign = true;
-      gpg.format = "ssh";
-      init.defaultBranch = "main";
-    };
-  };
-
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      pbcopy = "wl-copy";
-      pbpaste = "wl-paste";
-      rebuild = "sudo nixos-rebuild switch --flake /home/${username}/nixconfig#nixbook --impure";
-    };
-  };
-
-  programs.starship.enable = true;
-
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  programs.fish.enable = true;
 
   # Nix settings
   nixpkgs.config.allowUnfree = true;

@@ -1,4 +1,4 @@
-{ hostname, ... }:
+{ hostname, username, ... }:
 
 {
   imports = [
@@ -11,6 +11,14 @@
   ];
 
   networking.hostName = hostname;
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "hm-backup";
+    extraSpecialArgs = { inherit username; };
+    users.${username} = import ../home;
+  };
 
   system.stateVersion = "25.11";
 }
