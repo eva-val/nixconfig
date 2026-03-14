@@ -13,6 +13,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Asahi kernel with Thunderbolt support (fairydust branch)
+    linux-asahi-thunderbolt = {
+      url = "github:AsahiLinux/linux/fairydust";
+      flake = false;
+    };
   };
 
   outputs =
@@ -21,13 +27,21 @@
       nixpkgs,
       nixos-apple-silicon,
       home-manager,
+      linux-asahi-thunderbolt,
       ...
     }:
+    let
+      useThunderboltKernel = true;
+    in
     {
       nixosConfigurations.nixbook = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {
-          inherit nixos-apple-silicon;
+          inherit
+            nixos-apple-silicon
+            useThunderboltKernel
+            linux-asahi-thunderbolt
+            ;
           hostname = "nixbook";
           username = "eva";
         };

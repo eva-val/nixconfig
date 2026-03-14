@@ -4,6 +4,7 @@
   imports = [
     ../hardware-configuration.nix
     ../modules/boot.nix
+    ../modules/kernel.nix
     ../modules/networking.nix
     ../modules/desktop.nix
     ../modules/programs.nix

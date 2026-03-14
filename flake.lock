@@ -35,6 +35,23 @@
         "type": "github"
       }
     },
+    "linux-asahi-thunderbolt": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771167924,
+        "narHash": "sha256-5eAgJTKcRdjEFzHDSrh/XReaT6Db9YN2RN1SwOs28NE=",
+        "owner": "AsahiLinux",
+        "repo": "linux",
+        "rev": "61b6e714dd19b7bee1c0e6ec4234199e640c2932",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AsahiLinux",
+        "ref": "fairydust",
+        "repo": "linux",
+        "type": "github"
+      }
+    },
     "nixos-apple-silicon": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -75,6 +92,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "linux-asahi-thunderbolt": "linux-asahi-thunderbolt",
         "nixos-apple-silicon": "nixos-apple-silicon",
         "nixpkgs": "nixpkgs"
       }
