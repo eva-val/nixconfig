@@ -29,7 +29,10 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      trusted-users = [ "root" username ];
+      trusted-users = [
+        "root"
+        username
+      ];
       extra-substituters = [
         "https://nixos-apple-silicon.cachix.org"
       ];

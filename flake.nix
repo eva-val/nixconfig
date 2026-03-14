@@ -15,19 +15,27 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-apple-silicon, home-manager, ... }: {
-    nixosConfigurations.nixbook = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      specialArgs = {
-        inherit nixos-apple-silicon;
-        hostname = "nixbook";
-        username = "eva";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixos-apple-silicon,
+      home-manager,
+      ...
+    }:
+    {
+      nixosConfigurations.nixbook = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = {
+          inherit nixos-apple-silicon;
+          hostname = "nixbook";
+          username = "eva";
+        };
+        modules = [
+          nixos-apple-silicon.nixosModules.apple-silicon-support
+          home-manager.nixosModules.home-manager
+          ./hosts/nixbook.nix
+        ];
       };
-      modules = [
-        nixos-apple-silicon.nixosModules.apple-silicon-support
-        home-manager.nixosModules.home-manager
-        ./hosts/nixbook.nix
-      ];
     };
-  };
 }

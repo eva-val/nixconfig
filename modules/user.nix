@@ -3,7 +3,14 @@
 {
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "dialout" "jackaudio" "video" "input" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "dialout"
+      "jackaudio"
+      "video"
+      "input"
+    ];
     shell = pkgs.fish;
   };
 }
