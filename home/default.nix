@@ -5,6 +5,8 @@
     ./git.nix
     ./fish.nix
     ./starship.nix
+    ./vscode.nix
+    ./direnv.nix
   ];
 
   home.username = username;
@@ -20,7 +22,8 @@
     rustup
     gcc
     nix-index
-    vscode
+    nil
+    nixfmt
   ];
 
   services.gpg-agent = {
