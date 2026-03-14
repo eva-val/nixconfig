@@ -29,6 +29,10 @@ in
   # (avoids chicken-and-egg: the path must be active before building the kernel)
   nix.settings.extra-sandbox-paths = [ cacheDir ];
 
+  # Thunderbolt userspace tools
+  services.hardware.bolt.enable = useThunderboltKernel;
+  environment.systemPackages = lib.optionals useThunderboltKernel [ pkgs.thunderbolt ];
+
   nixpkgs.overlays = lib.optionals useThunderboltKernel [
     # Replace linux-asahi with fairydust (Thunderbolt) kernel
     (final: prev: {
