@@ -7,6 +7,7 @@
     ./starship.nix
     ./vscode.nix
     ./direnv.nix
+    ./prismlauncher.nix
   ];
 
   home.username = username;
@@ -16,7 +17,6 @@
 
   home.packages = with pkgs; [
     tree
-    prismlauncher
     bambu-studio
     pulseaudio
     rustup
