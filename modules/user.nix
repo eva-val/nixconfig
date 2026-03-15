@@ -10,6 +10,7 @@
       "jackaudio"
       "video"
       "input"
+      "kvm"
     ];
     shell = pkgs.fish;
   };

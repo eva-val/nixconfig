@@ -12,6 +12,7 @@
     fastfetch
     javaPackages.compiler.temurin-bin.jre-25
     claude-code
+    python314
   ];
 
   programs.firefox = {
