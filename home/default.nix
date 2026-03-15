@@ -8,6 +8,7 @@
     ./vscode.nix
     ./direnv.nix
     ./prismlauncher.nix
+    ./cosmic-theme.nix
   ];
 
   home.username = username;

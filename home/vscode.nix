@@ -24,7 +24,7 @@ in
         ++ [ witchHazel ];
 
       userSettings = {
-        "workbench.colorTheme" = "Witch Hazel";
+        "workbench.colorTheme" = "Witch Hazel Hypercolor";
 
         "editor.fontSize" = 14;
         "editor.tabSize" = 2;
