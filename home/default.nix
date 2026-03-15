@@ -26,6 +26,7 @@
     nixfmt
     jq
     gh
+    fastfetch
   ];
 
   services.gpg-agent = {
