@@ -25,6 +25,7 @@
     nil
     nixfmt
     jq
+    gh
   ];
 
   services.gpg-agent = {
