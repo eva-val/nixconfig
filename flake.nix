@@ -31,7 +31,7 @@
       ...
     }:
     let
-      useThunderboltKernel = true;
+      useThunderboltKernel = false;
     in
     {
       nixosConfigurations.nixbook = nixpkgs.lib.nixosSystem {
