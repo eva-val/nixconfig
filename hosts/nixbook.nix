@@ -9,6 +9,7 @@
     ../modules/desktop.nix
     ../modules/programs.nix
     ../modules/fex.nix
+    ../modules/keybindings.nix
     ../modules/user.nix
   ];
 
