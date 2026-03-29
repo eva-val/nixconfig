@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(nix search:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:gist.github.com)",
+      "WebFetch(domain:asahilinux.org)",
+      "WebFetch(domain:wiki.fex-emu.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:wiki.nixos.org)",
+      "Bash(gh issue:*)"
+    ]
+  }
+}

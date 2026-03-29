@@ -12,6 +12,9 @@
   '';
   boot.kernelParams = [ "hid_apple.swap_fn_leftctrl=1" ];
 
+  # Disable sleep key (F6/moon)
+  services.logind.settings.Login.HandleSuspendKey = "ignore";
+
   # Swap
   zramSwap.enable = true;
 
