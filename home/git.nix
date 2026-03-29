@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   programs.git = {
@@ -39,8 +39,7 @@
         enabled = true;
         autoupdate = true;
       };
-      core.excludesfile = "~/.gitignore";
-      core.hooksPath = "~/nixconfig/.githooks";
+      core.hooksPath = "${config.home.homeDirectory}/nixconfig/.githooks";
       rebase = {
         autoSquash = true;
         autoStash = true;

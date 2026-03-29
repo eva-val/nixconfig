@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 staged=$(git diff --cached --name-only --diff-filter=ACM -- '*.nix')
 [ -z "$staged" ] && exit 0
-nix fmt -- $staged 2>/dev/null
+nix fmt -- $staged
 git add $staged
