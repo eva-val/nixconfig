@@ -19,6 +19,10 @@
           s = "C-s";
           f = "C-f";
           w = "C-w";
+          t = "C-t";
+          r = "C-r";
+          l = "C-l";
+          q = "C-q";
           left = "home";
           right = "end";
         };
