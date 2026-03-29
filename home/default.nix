@@ -7,6 +7,7 @@
     ./starship.nix
     ./vscode.nix
     ./direnv.nix
+    ./helix.nix
     ./prismlauncher.nix
     ./cosmic-theme.nix
   ];
