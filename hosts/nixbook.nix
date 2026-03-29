@@ -10,6 +10,7 @@
     ../modules/programs.nix
     ../modules/fex.nix
     ../modules/keybindings.nix
+    ../modules/stylix.nix
     ../modules/user.nix
   ];
 

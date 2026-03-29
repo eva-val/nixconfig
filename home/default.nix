@@ -37,5 +37,11 @@
     enableSshSupport = true;
   };
 
+  # Disable Stylix for apps with official Witchhazel themes
+  stylix.targets = {
+    helix.enable = false; # official witchhazel_hyper port
+    vscode.enable = false; # official theaflowers extension
+  };
+
   programs.home-manager.enable = true;
 }

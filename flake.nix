@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Asahi kernel with Thunderbolt support (fairydust branch)
     linux-asahi-thunderbolt = {
       url = "github:AsahiLinux/linux/fairydust";
@@ -27,6 +32,7 @@
       nixpkgs,
       nixos-apple-silicon,
       home-manager,
+      stylix,
       linux-asahi-thunderbolt,
       ...
     }:
@@ -50,6 +56,7 @@
         modules = [
           nixos-apple-silicon.nixosModules.apple-silicon-support
           home-manager.nixosModules.home-manager
+          stylix.nixosModules.stylix
           ./hosts/nixbook.nix
         ];
       };

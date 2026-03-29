@@ -38,182 +38,179 @@
       };
     };
 
+    # Based on https://github.com/theacodes/witchhazel/blob/main/helix/witchhazel_hyper.toml
     themes = {
       witchhazel = {
         "ui.background" = {
-          bg = "background";
+          bg = "iris";
         };
         "ui.text" = "bone";
 
         "ui.cursor" = {
           bg = "bone";
-          fg = "background";
+          fg = "gloom";
         };
         "ui.cursor.normal" = {
           bg = "bone";
-          fg = "background";
+          fg = "gloom";
         };
         "ui.cursor.insert" = {
-          bg = "mint";
+          bg = "fern";
         };
-        "ui.cursor.match" = "turquoise";
+        "ui.cursor.match" = "carolina";
         "ui.selection" = {
-          bg = "amethyst";
+          bg = "nightshade";
         };
 
         "ui.menu" = {
-          bg = "panel";
-          fg = "bone";
+          bg = "purple";
+          fg = "cloud";
         };
         "ui.menu.selected" = {
-          bg = "highlight";
+          bg = "scum";
+          fg = "gloom";
         };
         "ui.help" = {
-          bg = "panel";
+          bg = "purple";
           fg = "cloud";
         };
         "ui.popup" = {
-          bg = "panel";
+          bg = "purple";
+          fg = "cloud";
+        };
+        "ui.window" = {
+          bg = "purple";
           fg = "cloud";
         };
         "ui.highlight" = {
-          bg = "background";
+          bg = "iris";
           fg = "bone";
         };
 
         "ui.cursorline.primary" = {
-          bg = "panel";
+          bg = "gloom";
         };
         "ui.cursorcolumn.primary" = {
-          bg = "panel";
+          bg = "gloom";
         };
         "ui.cursorline.secondary" = {
-          bg = "background";
+          bg = "smoke";
         };
         "ui.cursorcolumn.secondary" = {
-          bg = "background";
+          bg = "smoke";
         };
 
         "ui.statusline" = {
-          bg = "highlight";
+          bg = "thistle";
           fg = "bone";
         };
         "ui.statusline.normal" = {
-          bg = "highlight";
+          bg = "thistle";
           fg = "bone";
         };
         "ui.statusline.insert" = {
-          bg = "mint";
-          fg = "panel";
+          bg = "fern";
+          fg = "gloom";
         };
         "ui.statusline.select" = {
           modifiers = [ "reversed" ];
         };
         "ui.gutter" = "stone";
         "ui.gutter.selected" = {
-          bg = "background";
-          fg = "smoke";
+          bg = "gloom";
+          fg = "cloud";
         };
 
         "ui.virtual" = "stone";
         "ui.virtual.ruler" = {
-          bg = "panel";
+          bg = "gloom";
         };
 
-        "hint" = "mint";
-        "info" = "daffodil";
-        "warning" = "turquoise";
-        "error" = "salmon";
+        "hint" = "fern";
+        "info" = "scotchbroom";
+        "warning" = "carolina";
+        "error" = "peony";
         "diagnostic" = {
-          bg = "background";
+          bg = "iris";
         };
         "diagnostic.hint" = {
           underline = {
-            color = "mint";
+            color = "fern";
             style = "curl";
           };
         };
         "diagnostic.info" = {
           underline = {
-            color = "daffodil";
+            color = "scotchbroom";
             style = "curl";
           };
         };
         "diagnostic.warning" = {
           underline = {
-            color = "turquoise";
+            color = "carolina";
             style = "curl";
           };
         };
         "diagnostic.error" = {
           underline = {
-            color = "salmon";
+            color = "peony";
             style = "curl";
           };
         };
 
         "comment" = "smoke";
-        "string" = "turquoise";
+        "string" = "carolina";
         "constant" = {
-          fg = "lilac";
+          fg = "aster";
           modifiers = [ "bold" ];
         };
-        "keyword" = "mint";
+        "constant.numeric" = "scotchbroom";
+        "keyword" = "fern";
         "keyword.storage.type" = {
-          fg = "mint";
+          fg = "fern";
           modifiers = [ "italic" ];
         };
         "keyword.storage.modifier" = {
-          fg = "teal";
-          modifiers = [
-            "bold"
-            "italic"
-          ];
-        };
-        "type" = "bone";
-        "type.builtin" = {
-          fg = "turquoise";
+          fg = "sound";
           modifiers = [ "italic" ];
         };
+        "type.builtin" = "fern";
         "function" = "aster";
         "variable" = "bone";
-        "variable.parameter" = {
-          fg = "salmon";
-          modifiers = [ "italic" ];
-        };
+        "variable.parameter" = "peony";
         "tag" = "peony";
-        "attribute" = "daffodil";
-        "constructor" = "iceblue";
+        "attribute" = "scotchbroom";
+        "punctuation.delimiter" = "fern";
+        "operator" = "fern";
 
-        "markup.heading" = "daffodil";
+        "markup.heading" = "scotchbroom";
         "markup.link.url" = {
-          fg = "mint";
+          fg = "fern";
           modifiers = [ "bold" ];
         };
-        "markup.raw" = "daffodil";
+        "markup.raw" = "scotchbroom";
 
-        "diff.plus" = "mint";
+        "diff.plus" = "fern";
         "diff.minus" = "peony";
-        "diff.delta" = "turquoise";
+        "diff.delta" = "carolina";
 
         palette = {
-          background = "#282634";
-          panel = "#131218";
-          highlight = "#8864cb";
-          bone = "#f8f8f2";
-          cloud = "#c6c4cc";
-          smoke = "#bfbfbf";
+          gloom = "#131218";
+          iris = "#282634";
+          purple = "#433e56";
+          nightshade = "#8077a8";
+          thistle = "#8864cb";
+          aster = "#c5a3ff";
           stone = "#8a8a8a";
-          turquoise = "#81eeff";
-          lilac = "#c5a3ff";
-          aster = "#dcc8ff";
-          mint = "#81ffbe";
-          daffodil = "#fff9a3";
-          salmon = "#ffa3c3";
+          smoke = "#bfbfbf";
+          cloud = "#c6c4cc";
+          bone = "#f8f8f0";
+          scum = "#64cb96";
+          fern = "#81ffbe";
+          sound = "#46becb";
+          carolina = "#81eeff";
+          scotchbroom = "#fff9a3";
           peony = "#ffb8d1";
-          amethyst = "#8077a8";
-          teal = "#64becb";
-          iceblue = "#a3f3ff";
         };
       };
     };
