@@ -9,9 +9,7 @@
     clang
     wl-clipboard
     ripgrep
-    fastfetch
     javaPackages.compiler.temurin-bin.jre-25
-    claude-code
     python314
   ];
 
@@ -46,8 +44,9 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 }

@@ -14,7 +14,10 @@
     ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keyFiles = [
-      (builtins.fetchurl "https://github.com/eva-val.keys")
+      (pkgs.fetchurl {
+        url = "https://github.com/eva-val.keys";
+        hash = "sha256-PZ/8gubiKHLGSefWDy/DZACSu52npx+a1TLWUdFKZ+0=";
+      })
     ];
   };
 }

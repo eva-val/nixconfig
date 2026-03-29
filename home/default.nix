@@ -27,6 +27,7 @@
     nixfmt
     jq
     gh
+    claude-code
     fastfetch
   ];
 
