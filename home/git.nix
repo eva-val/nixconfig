@@ -40,6 +40,7 @@
         autoupdate = true;
       };
       core.excludesfile = "~/.gitignore";
+      core.hooksPath = "~/nixconfig/.githooks";
       rebase = {
         autoSquash = true;
         autoStash = true;

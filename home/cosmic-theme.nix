@@ -1313,6 +1313,7 @@ in
   # Importable .ron files for sharing/backup
   xdg.dataFile = {
     "cosmic-themes/witch-hazel-hypercolor-dark.ron".source = ../themes/witch-hazel-hypercolor-dark.ron;
-    "cosmic-themes/witch-hazel-hypercolor-terminal.ron".source = ../themes/witch-hazel-hypercolor-terminal.ron;
+    "cosmic-themes/witch-hazel-hypercolor-terminal.ron".source =
+      ../themes/witch-hazel-hypercolor-terminal.ron;
   };
 }

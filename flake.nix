@@ -34,7 +34,7 @@
       useThunderboltKernel = false;
     in
     {
-      formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt;
+      formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt-tree;
 
       nixosConfigurations.nixbook = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";

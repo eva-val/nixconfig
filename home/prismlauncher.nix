@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
 let
-  cosmicTouchpadConfig =
-    "$HOME/.config/cosmic/com.system76.CosmicComp/v1/input_touchpad";
+  cosmicTouchpadConfig = "$HOME/.config/cosmic/com.system76.CosmicComp/v1/input_touchpad";
 
   wrapper = pkgs.writeShellScript "prismlauncher-wrapper" ''
     CONFIG="${cosmicTouchpadConfig}"
@@ -32,7 +31,12 @@ in
     icon = "org.prismlauncher.PrismLauncher";
     terminal = false;
     type = "Application";
-    categories = [ "Game" "ActionGame" "AdventureGame" "Simulation" ];
+    categories = [
+      "Game"
+      "ActionGame"
+      "AdventureGame"
+      "Simulation"
+    ];
     startupNotify = true;
     mimeType = [
       "application/zip"

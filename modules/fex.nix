@@ -17,7 +17,9 @@ let
     doCheck = false;
     nativeCheckInputs = [ ];
     postInstall = "";
-    meta = old.meta // { broken = false; };
+    meta = old.meta // {
+      broken = false;
+    };
   });
 in
 {
