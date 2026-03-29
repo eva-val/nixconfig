@@ -19,7 +19,7 @@
   home.packages = with pkgs; [
     tree
     bambu-studio
-    pulseaudio
+    pulsemixer
     rustup
     gcc
     nix-index

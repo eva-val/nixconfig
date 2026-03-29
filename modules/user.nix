@@ -7,7 +7,6 @@
       "networkmanager"
       "wheel"
       "dialout"
-      "jackaudio"
       "video"
       "input"
       "kvm"
