@@ -32,6 +32,7 @@
     gh
     claude-code
     fastfetch
+    obsidian
   ];
 
   services.gpg-agent = {
