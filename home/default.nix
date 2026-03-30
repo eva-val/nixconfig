@@ -17,6 +17,8 @@
 
   home.stateVersion = "25.11";
 
+  gtk.gtk4.theme = null;
+
   home.packages = with pkgs; [
     tree
     bambu-studio
