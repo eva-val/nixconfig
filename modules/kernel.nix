@@ -10,25 +10,7 @@
   ...
 }:
 
-let
-  cacheDir = config.programs.ccache.cacheDir;
-
-  # Wrapper script so CC can be a single path (no spaces)
-  ccache-gcc = pkgs.writeShellScript "ccache-gcc" ''
-    export CCACHE_DIR="${cacheDir}"
-    export CCACHE_COMPRESS=1
-    export CCACHE_SLOPPINESS=random_seed
-    export CCACHE_UMASK=007
-    exec ${pkgs.ccache}/bin/ccache gcc "$@"
-  '';
-in
 {
-  # ccache for faster kernel rebuilds
-  programs.ccache.enable = useThunderboltKernel;
-  # Always set so the sandbox path is available on next rebuild
-  # (avoids chicken-and-egg: the path must be active before building the kernel)
-  nix.settings.extra-sandbox-paths = [ cacheDir ];
-
   # Thunderbolt userspace tools
   services.hardware.bolt.enable = useThunderboltKernel;
   environment.systemPackages = lib.optionals useThunderboltKernel [ pkgs.thunderbolt ];
@@ -54,16 +36,11 @@ in
             buildLinux {
               inherit lib;
               pname = "linux-asahi";
-              version = "6.18.10";
-              modDirVersion = "6.18.10";
-              extraMeta.branch = "6.18";
+              version = "6.19.11";
+              modDirVersion = "6.19.11";
+              extraMeta.branch = "6.19";
 
               src = linux-asahi-thunderbolt;
-
-              extraMakeFlags = [
-                "CC=${ccache-gcc}"
-                "HOSTCC=${ccache-gcc}"
-              ];
 
               kernelPatches = [
                 {

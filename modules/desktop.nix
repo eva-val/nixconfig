@@ -12,6 +12,12 @@
 
   # Input
   services.libinput.enable = true;
+  services.libinput.touchpad.disableWhileTyping = true;
+  services.libinput.touchpad.additionalOptions = ''
+    Option "PalmDetection" "true"
+    Option "PalmMinWidth" "3"
+    Option "PalmMinZ" "70"
+  '';
 
   # Printing
   services.printing.enable = true;

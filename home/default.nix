@@ -30,7 +30,7 @@
     nixfmt
     jq
     gh
-    claude-code
+    #    claude-code
     fastfetch
     obsidian
   ];
