@@ -33,6 +33,7 @@
     #    claude-code
     fastfetch
     obsidian
+    kicad
   ];
 
   services.gpg-agent = {
