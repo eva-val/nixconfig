@@ -9,6 +9,7 @@
     ../modules/desktop.nix
     ../modules/programs.nix
     ../modules/fex.nix
+    ../modules/steam.nix
     ../modules/keybindings.nix
     ../modules/stylix.nix
     ../modules/user.nix

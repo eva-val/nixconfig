@@ -41,6 +41,12 @@ in
 {
   boot.kernelModules = [ "kvm" ];
 
+  # Register qemu-user binfmt for x86_64 so Nix can locally build x86_64
+  # derivations that aren't substitutable from cache (e.g. Steam's FHS env
+  # wrappers). FEX itself stays the runtime translator inside muvm; this is
+  # only for build-time on the host.
+  boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
+
   # muvm exposes the host filesystem to the VM guest.
   # Steam's scripts use #!/bin/bash shebangs, which fail on NixOS
   # without this since /bin/bash doesn't exist by default.
