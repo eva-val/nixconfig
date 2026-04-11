@@ -21,6 +21,22 @@ let
       broken = false;
     };
   });
+
+  # FEX rootfs in erofs format. muvm wants erofs (not squashfs) for its -f
+  # flag. URLs and hashes are listed at https://rootfs.fex-emu.gg/RootFS_links.json
+  fex-rootfs = pkgs.fetchurl {
+    url = "https://rootfs.fex-emu.gg/Ubuntu_24_04/2025-12-27/Ubuntu_24_04.ero";
+    hash = "sha256-1+ZbuNAnbFuMI+ibXntnirx8tQZkGYeQUiOEpJv+uRE=";
+  };
+
+  # Convenience wrapper: boot a muvm guest with the FEX rootfs wired in and
+  # drop into an interactive shell. Smoke-test target before layering wine.
+  muvm-shell = pkgs.writeShellScriptBin "muvm-shell" ''
+    exec ${pkgs.muvm}/bin/muvm \
+      -f ${fex-rootfs} \
+      -i -t \
+      -- /bin/bash "$@"
+  '';
 in
 {
   boot.kernelModules = [ "kvm" ];
@@ -36,6 +52,7 @@ in
   environment.systemPackages = with pkgs; [
     fex
     muvm
+    muvm-shell
     sommelier-fixed
     squashfuse
     squashfsTools
