@@ -16,6 +16,11 @@ let
   steam = pkgsX86.steam;
 
   initScript = pkgs.writeShellScript "muvm-steam-init.sh" ''
+    # Fix DNS: host's systemd-resolved stub (127.0.0.53) isn't reachable from the guest.
+    # Use Tailscale's MagicDNS (handles .ts.net + forwards the rest) with Cloudflare fallback.
+    echo 'nameserver 100.100.100.100' > /etc/resolv.conf
+    echo 'nameserver 1.1.1.1' >> /etc/resolv.conf
+
     ln -snf ${mesa}   /run/opengl-driver
     ln -snf ${mesa32} /run/opengl-driver-32
   '';
