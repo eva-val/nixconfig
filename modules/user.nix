@@ -10,6 +10,7 @@
       "video"
       "input"
       "kvm"
+      "audio"
     ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keyFiles = [
