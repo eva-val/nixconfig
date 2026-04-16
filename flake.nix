@@ -37,7 +37,7 @@
       ...
     }:
     let
-      useThunderboltKernel = true;
+      useThunderboltKernel = false;
     in
     {
       formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixfmt-tree;
