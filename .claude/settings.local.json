@@ -12,7 +12,9 @@
       "WebFetch(domain:wiki.nixos.org)",
       "Bash(gh issue:*)",
       "Bash(gh search:*)",
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "WebFetch(domain:gitlab.freedesktop.org)",
+      "WebFetch(domain:docs.pipewire.org)"
     ]
   }
 }
