@@ -25,11 +25,12 @@
   # Thumbnail support in file managers
   services.tumbler.enable = true;
 
-  # Increase PipeWire quantum to reduce pops on play/pause with Asahi speaker DSP
+  # PipeWire tuning for Asahi speaker DSP
   services.pipewire.extraConfig.pipewire."91-asahi-quantum" = {
     "context.properties" = {
-      "default.clock.quantum" = 2048;
-      "default.clock.min-quantum" = 2048;
+      "default.clock.quantum" = 1024;
+      "default.clock.min-quantum" = 512;
+      "default.clock.max-quantum" = 2048;
     };
   };
 

@@ -39,22 +39,80 @@
     let
       useThunderboltKernel = false;
 
-      # Overlay asahi-audio to insert zeroramp nodes into speaker DSP graphs.
-      # Eliminates pops/clicks on play/pause by ramping silence transitions.
-      # Upstream PipeWire added zeroramp in 1.6.0 but asahi-audio hasn't
-      # integrated it yet (ref: AsahiLinux/asahi-audio#18).
-      asahi-audio-zeroramp = final: prev: {
+      # Overlay asahi-audio to patch speaker DSP filter graphs:
+      #  1. Insert zeroramp nodes to eliminate pops/clicks on play/pause
+      #     (upstream PipeWire 1.6.0 feature, ref: AsahiLinux/asahi-audio#18)
+      #  2. Add delay nodes on tweeter outputs to compensate for the latency
+      #     added by woofer_bp + woofer_lim on the woofer path (480 samples
+      #     at 48kHz = 10ms), fixing pops/crackle during seeks/scrubbing
+      asahi-audio-dsp-fix = final: prev: {
         asahi-audio = prev.asahi-audio.overrideAttrs (old: {
+          nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ prev.python3 ];
           postFixup = (old.postFixup or "") + ''
             for graph in $out/share/asahi-audio/*/graph.json; do
-              # Add zeroramp nodes at start of nodes array
-              sed -i 's|"nodes": \[|"nodes": [\n            {\n                "type": "builtin",\n                "label": "zeroramp",\n                "name": "zeroL"\n            },\n            {\n                "type": "builtin",\n                "label": "zeroramp",\n                "name": "zeroR"\n            },|' "$graph"
+              python3 - "$graph" << 'PYEOF'
+            import json, re, sys
 
-              # Route graph inputs through zeroramp
-              sed -i '/"inputs"/,/\]/{s|"bassex:in_l"|"zeroL:In"|; s|"bassex:in_r"|"zeroR:In"|}' "$graph"
+            with open(sys.argv[1]) as f:
+                raw = f.read()
 
-              # Add zeroramp->bassex links at start of links array
-              sed -i 's|{"output": "bassex:out_l", "input": "ell:in"}|{"output": "zeroL:Out", "input": "bassex:in_l"},\n            {"output": "zeroR:Out", "input": "bassex:in_r"},\n            {"output": "bassex:out_l", "input": "ell:in"}|' "$graph"
+            # Strip trailing commas before } or ] (non-standard JSON)
+            raw = re.sub(r',\s*([}\]])', r'\1', raw)
+            data = json.loads(raw)
+
+            fg = data["filter.graph"]
+            nodes = fg["nodes"]
+            links = fg["links"]
+            outputs = fg["outputs"]
+
+            # 1) Prepend zeroramp nodes
+            nodes[:0] = [
+                {"type": "builtin", "label": "zeroramp", "name": "zeroL"},
+                {"type": "builtin", "label": "zeroramp", "name": "zeroR"},
+            ]
+
+            # Route inputs through zeroramp
+            fg["inputs"] = ["zeroL:In", "zeroR:In"]
+            links[:0] = [
+                {"output": "zeroL:Out", "input": "bassex:in_l"},
+                {"output": "zeroR:Out", "input": "bassex:in_r"},
+            ]
+
+            # 2) Add delay nodes to align tweeter path with woofer path.
+            #    woofer_bp + woofer_lim add ~480 samples latency at 48kHz (10ms)
+            #    that the tweeter path doesn't have.
+            nodes.extend([
+                {
+                    "type": "builtin",
+                    "label": "delay",
+                    "name": "delayLT",
+                    "config": {"max-delay": 0.02},
+                    "control": {"Delay (s)": 0.01},
+                },
+                {
+                    "type": "builtin",
+                    "label": "delay",
+                    "name": "delayRT",
+                    "config": {"max-delay": 0.02},
+                    "control": {"Delay (s)": 0.01},
+                },
+            ])
+
+            # Route tweeter convolvers through delay
+            links.extend([
+                {"output": "convLT:Out", "input": "delayLT:In"},
+                {"output": "convRT:Out", "input": "delayRT:In"},
+            ])
+
+            # Replace tweeter outputs with delayed versions
+            fg["outputs"] = [
+                o.replace("convLT:Out", "delayLT:Out").replace("convRT:Out", "delayRT:Out")
+                for o in outputs
+            ]
+
+            with open(sys.argv[1], "w") as f:
+                json.dump(data, f, indent=4)
+            PYEOF
             done
           '';
         });
@@ -75,7 +133,7 @@
           username = "eva";
         };
         modules = [
-          { nixpkgs.overlays = [ asahi-audio-zeroramp ]; }
+          { nixpkgs.overlays = [ asahi-audio-dsp-fix ]; }
           nixos-apple-silicon.nixosModules.apple-silicon-support
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
