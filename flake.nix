@@ -67,10 +67,19 @@
 
             # 1) Prepend zeroramp nodes
             nodes[:0] = [
-                {"type": "builtin", "label": "zeroramp", "name": "zeroL"},
-                {"type": "builtin", "label": "zeroramp", "name": "zeroR"},
+                {
+                    "type": "builtin",
+                    "label": "zeroramp",
+                    "name": "zeroL",
+                    "control": {"Gap (s)": 0.08, "Duration (s)": 0.08},
+                },
+                {
+                    "type": "builtin",
+                    "label": "zeroramp",
+                    "name": "zeroR",
+                    "control": {"Gap (s)": 0.08, "Duration (s)": 0.08},
+                },
             ]
-
             # Route inputs through zeroramp
             fg["inputs"] = ["zeroL:In", "zeroR:In"]
             links[:0] = [
@@ -86,15 +95,15 @@
                     "type": "builtin",
                     "label": "delay",
                     "name": "delayLT",
-                    "config": {"max-delay": 0.02},
-                    "control": {"Delay (s)": 0.01},
+                    "config": {"max-delay": 0.04},
+                    "control": {"Delay (s)": 0.02},
                 },
                 {
                     "type": "builtin",
                     "label": "delay",
                     "name": "delayRT",
-                    "config": {"max-delay": 0.02},
-                    "control": {"Delay (s)": 0.01},
+                    "config": {"max-delay": 0.04},
+                    "control": {"Delay (s)": 0.02},
                 },
             ])
 
