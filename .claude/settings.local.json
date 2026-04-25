@@ -14,7 +14,8 @@
       "Bash(gh search:*)",
       "Bash(gh repo:*)",
       "WebFetch(domain:gitlab.freedesktop.org)",
-      "WebFetch(domain:docs.pipewire.org)"
+      "WebFetch(domain:docs.pipewire.org)",
+      "Bash(grep:*)"
     ]
   }
 }
