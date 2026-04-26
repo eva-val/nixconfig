@@ -11,6 +11,7 @@
     ripgrep
     javaPackages.compiler.temurin-bin.jre-25
     python314
+    openscad-unstable
   ];
 
   programs.firefox = {
