@@ -12,6 +12,11 @@
   '';
   boot.kernelParams = [ "hid_apple.swap_fn_leftctrl=1" ];
 
+  # Asahi kernel uses 16K pages (CONFIG_ARCH_MMAP_RND_BITS_MAX=31), but
+  # nixpkgs can't introspect the Asahi kernel config and defaults to 33,
+  # which the kernel rejects. Pin to 31.
+  boot.kernel.sysctl."vm.mmap_rnd_bits" = 31;
+
   # Disable sleep key (F6/moon)
   services.logind.settings.Login.HandleSuspendKey = "ignore";
 
