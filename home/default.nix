@@ -21,7 +21,6 @@
 
   home.packages = with pkgs; [
     tree
-    bambu-studio
     pulsemixer
     rustup
     gcc

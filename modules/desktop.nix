@@ -25,15 +25,6 @@
   # Thumbnail support in file managers
   services.tumbler.enable = true;
 
-  # PipeWire tuning for Asahi speaker DSP
-  services.pipewire.extraConfig.pipewire."91-asahi-quantum" = {
-    "context.properties" = {
-      "default.clock.quantum" = 1024;
-      "default.clock.min-quantum" = 512;
-      "default.clock.max-quantum" = 2048;
-    };
-  };
-
   # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

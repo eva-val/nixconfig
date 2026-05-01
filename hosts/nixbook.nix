@@ -7,10 +7,12 @@
     ../modules/kernel.nix
     ../modules/networking.nix
     ../modules/desktop.nix
+    ../modules/audio.nix
     ../modules/programs.nix
     ../modules/fex.nix
     ../modules/steam.nix
     ../modules/android-studio.nix
+    ../modules/bambu-studio.nix
     ../modules/keybindings.nix
     ../modules/stylix.nix
     ../modules/user.nix
