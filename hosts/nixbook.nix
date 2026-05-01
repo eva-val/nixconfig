@@ -7,7 +7,6 @@
     ../modules/kernel.nix
     ../modules/networking.nix
     ../modules/desktop.nix
-    ../modules/audio.nix
     ../modules/programs.nix
     ../modules/fex.nix
     ../modules/steam.nix
