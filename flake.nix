@@ -5,7 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-apple-silicon = {
-      url = "github:nix-community/nixos-apple-silicon";
+      # PR #451: Support Asahi installer vendorfw format
+      url = "github:Solidsilver/nixos-apple-silicon/feat/vendorfw-support";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,6 +25,16 @@
       url = "github:AsahiLinux/linux/fairydust";
       flake = false;
     };
+
+    # Upstream wluma pinned to 4.11.0 (includes aop-sensors-als in the IIO
+    # allowlist). Nixpkgs is still on 4.10.0; bump PR pending.
+    wluma = {
+      url = "github:max-baz/wluma/4.11.0";
+      flake = false;
+    };
+
+    # ryantm's nixpkgs-update — automated package version bumper, not in nixpkgs
+    nixpkgs-update.url = "github:ryantm/nixpkgs-update";
   };
 
   outputs =
@@ -34,6 +45,8 @@
       home-manager,
       stylix,
       linux-asahi-thunderbolt,
+      wluma,
+      nixpkgs-update,
       ...
     }:
     let
@@ -49,6 +62,8 @@
             nixos-apple-silicon
             useThunderboltKernel
             linux-asahi-thunderbolt
+            wluma
+            nixpkgs-update
             ;
           hostname = "nixbook";
           username = "eva";

@@ -1,4 +1,9 @@
-{ hostname, username, ... }:
+{
+  hostname,
+  username,
+  nixpkgs-update,
+  ...
+}:
 
 {
   imports = [
@@ -23,7 +28,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "hm-backup";
-    extraSpecialArgs = { inherit username; };
+    extraSpecialArgs = { inherit username nixpkgs-update; };
     users.${username} = import ../home;
   };
 

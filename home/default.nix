@@ -1,4 +1,9 @@
-{ pkgs, username, ... }:
+{
+  pkgs,
+  username,
+  nixpkgs-update,
+  ...
+}:
 
 {
   imports = [
@@ -23,6 +28,7 @@
     tree
     pulsemixer
     rustup
+    tracy
     gcc
     nix-index
     nil
@@ -33,6 +39,11 @@
     fastfetch
     obsidian
     kicad
+    (import (nixpkgs-update + "/pkgs/default.nix") {
+      inherit (nixpkgs-update.inputs) nixpkgs mmdoc runtimeDeps;
+      self = nixpkgs-update;
+      system = pkgs.system;
+    }).default
   ];
 
   services.gpg-agent = {

@@ -12,6 +12,8 @@
     javaPackages.compiler.temurin-bin.jre-25
     python314
     openscad-unstable
+    jetbrains.rust-rover
+    rustup
   ];
 
   programs.firefox = {
@@ -20,6 +22,10 @@
       "widget.gtk.libadwaita-colors.enabled" = false;
     };
   };
+
+  # Use JetBrains' native Wayland AWT toolkit so it picks up COSMIC's scale
+  # natively instead of rendering blurry through XWayland.
+  environment.sessionVariables._JAVA_OPTIONS = "-Dawt.toolkit.name=WLToolkit -Dsun.java2d.uiScale=2.0";
 
   programs.fish.enable = true;
 

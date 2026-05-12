@@ -16,7 +16,7 @@
     openssh.authorizedKeys.keyFiles = [
       (pkgs.fetchurl {
         url = "https://github.com/eva-val.keys";
-        hash = "sha256-PZ/8gubiKHLGSefWDy/DZACSu52npx+a1TLWUdFKZ+0=";
+        hash = "sha256-e4o1/G+ICQOaiFfagQDeTaiUI9M932bqQK7i+sTfSK0=";
       })
     ];
   };
