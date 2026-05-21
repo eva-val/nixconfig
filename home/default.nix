@@ -29,6 +29,7 @@
     pulsemixer
     rustup
     tracy
+    pkg-config
     gcc
     nix-index
     nil
