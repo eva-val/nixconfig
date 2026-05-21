@@ -43,7 +43,7 @@
     (import (nixpkgs-update + "/pkgs/default.nix") {
       inherit (nixpkgs-update.inputs) nixpkgs mmdoc runtimeDeps;
       self = nixpkgs-update;
-      system = pkgs.system;
+      system = pkgs.stdenv.hostPlatform.system;
     }).default
   ];
 
