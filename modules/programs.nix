@@ -14,6 +14,7 @@
     openscad-unstable
     jetbrains.rust-rover
     rustup
+    bolt-launcher
   ];
 
   programs.firefox = {
