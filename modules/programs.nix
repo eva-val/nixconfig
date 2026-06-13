@@ -30,6 +30,8 @@
 
   programs.fish.enable = true;
 
+  programs.nix-ld.enable = true;
+
   # Nix settings
   nixpkgs.config.allowUnfree = true;
 
