@@ -2,18 +2,59 @@
 
 {
   environment.systemPackages = with pkgs; [
+    # Editors / shell
     vim
-    curl
     fish
+
+    # Core CLI utilities
     git
-    clang
-    wl-clipboard
+    wget
+    curl
     ripgrep
-    javaPackages.compiler.temurin-bin.jre-25
+    fd
+    fzf
+    jq
+    tree
+    file
+    unzip
+    zip
+    p7zip
+    htop
+    btop
+    tmux
+    rsync
+    eza
+    bat
+    less
+    killall
+
+    # Network tools
+    dig
+    nmap
+    inetutils # ping, traceroute, telnet, etc.
+    mtr
+    iperf3
+    tcpdump
+    nettools # ifconfig, netstat, route, arp
+    whois
+    socat
+    ldns # drill
+    ethtool
+    iftop
+    nload
+    speedtest-cli
+    openssl
+
+    # Development toolchains
+    clang
+    rustup
     python314
+    javaPackages.compiler.temurin-bin.jre-25
+
+    # Desktop / app
+    wl-clipboard
     openscad-unstable
     jetbrains.rust-rover
-    rustup
     bolt-launcher
   ];
 
