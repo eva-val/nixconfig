@@ -5,8 +5,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-apple-silicon = {
-      # PR #451: Support Asahi installer vendorfw format
-      url = "github:Solidsilver/nixos-apple-silicon/feat/vendorfw-support";
+      # PR #451 (Solidsilver): Support Asahi installer vendorfw format,
+      # rebased onto upstream main so binary cache hits work.
+      url = "github:eva-val/nixos-apple-silicon/feat/vendorfw-support";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

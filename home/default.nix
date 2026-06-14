@@ -22,12 +22,12 @@
 
   home.stateVersion = "25.11";
 
-  gtk.gtk4.theme = null;
-
   home.packages = with pkgs; [
     tree
     pulsemixer
     rustup
+    nodejs
+    bun
     tracy
     pkg-config
     gcc
