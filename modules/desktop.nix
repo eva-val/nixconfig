@@ -1,4 +1,4 @@
-{ pkgs, wluma, ... }:
+{ pkgs, ... }:
 
 {
   # COSMIC desktop
@@ -23,18 +23,11 @@
   hardware.sensor.iio.enable = true;
 
   # Auto-brightness driven by the AOP ALS (VD6286).
-  # Built from upstream wluma 4.11.1 (pinned in flake.nix) since nixpkgs is
-  # still on 4.10.0. 4.11.0 adds `aop-sensors-als` to the IIO name allowlist.
+  # Upstream nixpkgs patches the udev rule but never installs it; copy it into
+  # $out so services.udev.packages picks it up. (Pending PR.)
   nixpkgs.overlays = [
     (final: prev: {
       wluma = prev.wluma.overrideAttrs (old: {
-        version = "4.11.1";
-        src = wluma;
-        cargoDeps = final.rustPlatform.importCargoLock {
-          lockFile = wluma + "/Cargo.lock";
-        };
-        # Upstream nixpkgs patches the rule but never installs it; copy it
-        # into $out so services.udev.packages picks it up. (Pending PR.)
         postInstall = (old.postInstall or "") + ''
           install -Dm644 90-wluma-backlight.rules \
             $out/lib/udev/rules.d/90-wluma-backlight.rules

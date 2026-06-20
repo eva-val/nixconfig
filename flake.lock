@@ -317,8 +317,7 @@
         "nixos-apple-silicon": "nixos-apple-silicon",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
-        "stylix": "stylix",
-        "wluma": "wluma"
+        "stylix": "stylix"
       }
     },
     "runtimeDeps": {
@@ -482,23 +481,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "wluma": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1778247905,
-        "narHash": "sha256-va+y/dwJ4vTyuqn4VwVXQo8F2qWJPq6F6e9/7V4qDQQ=",
-        "owner": "max-baz",
-        "repo": "wluma",
-        "rev": "259a874af6b4d854073d340cccb1852f63635fd3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "max-baz",
-        "ref": "4.11.1",
-        "repo": "wluma",
         "type": "github"
       }
     }
