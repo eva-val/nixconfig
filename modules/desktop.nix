@@ -23,12 +23,12 @@
   hardware.sensor.iio.enable = true;
 
   # Auto-brightness driven by the AOP ALS (VD6286).
-  # Built from upstream wluma 4.11.0 (pinned in flake.nix) since nixpkgs is
+  # Built from upstream wluma 4.11.1 (pinned in flake.nix) since nixpkgs is
   # still on 4.10.0. 4.11.0 adds `aop-sensors-als` to the IIO name allowlist.
   nixpkgs.overlays = [
     (final: prev: {
       wluma = prev.wluma.overrideAttrs (old: {
-        version = "4.11.0";
+        version = "4.11.1";
         src = wluma;
         cargoDeps = final.rustPlatform.importCargoLock {
           lockFile = wluma + "/Cargo.lock";

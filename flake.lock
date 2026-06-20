@@ -488,16 +488,16 @@
     "wluma": {
       "flake": false,
       "locked": {
-        "lastModified": 1777821258,
-        "narHash": "sha256-kisxv+CYouYpVTULmjvDEGucha+/T+gQJEsGyTQkQLk=",
+        "lastModified": 1778247905,
+        "narHash": "sha256-va+y/dwJ4vTyuqn4VwVXQo8F2qWJPq6F6e9/7V4qDQQ=",
         "owner": "max-baz",
         "repo": "wluma",
-        "rev": "0dad756dbc31cace14fce87f45288b45ad3bf0fc",
+        "rev": "259a874af6b4d854073d340cccb1852f63635fd3",
         "type": "github"
       },
       "original": {
         "owner": "max-baz",
-        "ref": "4.11.0",
+        "ref": "4.11.1",
         "repo": "wluma",
         "type": "github"
       }

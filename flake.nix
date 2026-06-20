@@ -27,10 +27,10 @@
       flake = false;
     };
 
-    # Upstream wluma pinned to 4.11.0 (includes aop-sensors-als in the IIO
+    # Upstream wluma pinned to 4.11.1 (includes aop-sensors-als in the IIO
     # allowlist). Nixpkgs is still on 4.10.0; bump PR pending.
     wluma = {
-      url = "github:max-baz/wluma/4.11.0";
+      url = "github:max-baz/wluma/4.11.1";
       flake = false;
     };
 
