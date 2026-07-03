@@ -15,6 +15,7 @@
     ../modules/programs.nix
     ../modules/fex.nix
     ../modules/steam.nix
+    ../modules/steambattery.nix
     ../modules/android-studio.nix
     ../modules/bambu-studio.nix
     ../modules/keybindings.nix

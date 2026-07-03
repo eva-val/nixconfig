@@ -35,6 +35,10 @@
       url = "github:sadjow/claude-code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    steambattery = {
+      url = "github:eva-val/steambattery";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -47,6 +51,7 @@
       linux-asahi-thunderbolt,
       nixpkgs-update,
       claude-code,
+      steambattery,
       ...
     }:
     let
@@ -63,6 +68,7 @@
             useThunderboltKernel
             linux-asahi-thunderbolt
             nixpkgs-update
+            steambattery
             ;
           hostname = "nixbook";
           username = "eva";

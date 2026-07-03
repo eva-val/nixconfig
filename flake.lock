@@ -357,6 +357,7 @@
         "nixos-apple-silicon": "nixos-apple-silicon",
         "nixpkgs": "nixpkgs",
         "nixpkgs-update": "nixpkgs-update",
+        "steambattery": "steambattery",
         "stylix": "stylix"
       }
     },
@@ -373,6 +374,26 @@
         "owner": "NixOS",
         "ref": "nixos-unstable-small",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "steambattery": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783122110,
+        "narHash": "sha256-i/5HDnbeTDOrHDhX/9pAcSnJw1psEu28nOxKOdIYUV8=",
+        "owner": "eva-val",
+        "repo": "steambattery",
+        "rev": "8e6751b4ae74c4419be6636422bdb08b91adc44f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "eva-val",
+        "repo": "steambattery",
         "type": "github"
       }
     },
