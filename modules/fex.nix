@@ -2,14 +2,14 @@
 
 let
   # Upstream fixed the dmabuf bug (b/441537635) in CL 6941981, merged 2025-09-17.
-  # nixpkgs sommelier is stuck at v126.0 and marked broken; bump to v148.0
-  # (current Chrome stable release branch HEAD) for the fix + ongoing fixes.
+  # nixpkgs sommelier is still stuck at v126.0 and marked broken; bump to current
+  # platform2 main HEAD (commit 6b613ac5, 2026-06-19) for the fix + ongoing fixes.
   sommelier-fixed = pkgs.sommelier.overrideAttrs (old: {
-    version = "148.0";
+    version = "150.0";
     src = pkgs.fetchzip {
-      url = "https://chromium.googlesource.com/chromiumos/platform2/+archive/a20d2a88a54a5dc56cf738d040b6dd57ca98dc21/vm_tools/sommelier.tar.gz";
+      url = "https://chromium.googlesource.com/chromiumos/platform2/+archive/6b613ac50aac06960880d45a735ef2f14b62ea2b/vm_tools/sommelier.tar.gz";
       stripRoot = false;
-      sha256 = "sha256-yhv8gU0byk8dYvNADOtB1pPNmposVFZBncstah1vVgE=";
+      sha256 = "sha256-4iE/EoAroS1wMO/QyIcy/pRfljUFU7skVBdtXJ/z/Jw=";
     };
     # Tests segfault in sandbox (LinuxDmabufTest needs GPU context) — same
     # issue exists in all nixpkgs versions, noted by upstream PR #438115 author.

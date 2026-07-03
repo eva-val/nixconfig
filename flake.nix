@@ -29,6 +29,12 @@
 
     # ryantm's nixpkgs-update — automated package version bumper, not in nixpkgs
     nixpkgs-update.url = "github:ryantm/nixpkgs-update";
+
+    # sadjow's claude-code — tracks latest Claude Code release ahead of nixpkgs
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -40,6 +46,7 @@
       stylix,
       linux-asahi-thunderbolt,
       nixpkgs-update,
+      claude-code,
       ...
     }:
     let
@@ -64,6 +71,7 @@
           nixos-apple-silicon.nixosModules.apple-silicon-support
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
+          { nixpkgs.overlays = [ claude-code.overlays.default ]; }
           ./hosts/nixbook.nix
         ];
       };
