@@ -41,7 +41,9 @@
   environment.etc."xdg/wluma/config.toml".text = ''
     [als.iio]
     path = "/sys/bus/iio/devices"
-    thresholds = { 0 = "night", 20 = "dim", 80 = "normal", 250 = "bright", 500 = "outdoors" }
+    # Fewer, wider buckets so ordinary head/light movement stays inside one
+    # level instead of flipping across a boundary and ping-ponging brightness.
+    thresholds = { 0 = "night", 30 = "dim", 150 = "normal", 600 = "bright" }
 
     [[output.backlight]]
     name = "eDP-1"

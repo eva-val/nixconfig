@@ -17,6 +17,12 @@
   # which the kernel rejects. Pin to 31.
   boot.kernel.sysctl."vm.mmap_rnd_bits" = 31;
 
+  # Battery: powertop-flagged tunables. Disable the NMI watchdog (a per-CPU
+  # timer we don't need on a laptop) and batch dirty-page writeback so the
+  # disk wakes less often when idle.
+  boot.kernel.sysctl."kernel.nmi_watchdog" = 0;
+  boot.kernel.sysctl."vm.dirty_writeback_centisecs" = 1500;
+
   # Disable sleep key (F6/moon)
   services.logind.settings.Login.HandleSuspendKey = "ignore";
 

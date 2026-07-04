@@ -23,4 +23,11 @@
 
   # DNS
   services.resolved.enable = true;
+
+  # Battery: let the Broadcom WiFi (01:00.0) and Bluetooth (01:00.1) PCI
+  # radios enter runtime PM autosuspend when idle. powertop flagged both as
+  # stuck "on"; vendor 0x14e4 = Broadcom, matching both functions.
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x14e4", ATTR{power/control}="auto"
+  '';
 }

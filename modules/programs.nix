@@ -21,6 +21,7 @@
     p7zip
     htop
     btop
+    powertop
     tmux
     rsync
     eza
