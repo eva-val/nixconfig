@@ -35,6 +35,12 @@
       url = "github:sadjow/claude-code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # sadjow's codex-cli — tracks latest Codex CLI release ahead of nixpkgs
+    codex-cli = {
+      url = "github:sadjow/codex-cli-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     steambattery = {
       url = "github:eva-val/steambattery";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +57,7 @@
       linux-asahi-thunderbolt,
       nixpkgs-update,
       claude-code,
+      codex-cli,
       steambattery,
       ...
     }:
@@ -77,7 +84,12 @@
           nixos-apple-silicon.nixosModules.apple-silicon-support
           home-manager.nixosModules.home-manager
           stylix.nixosModules.stylix
-          { nixpkgs.overlays = [ claude-code.overlays.default ]; }
+          {
+            nixpkgs.overlays = [
+              claude-code.overlays.default
+              codex-cli.overlays.default
+            ];
+          }
           ./hosts/nixbook.nix
         ];
       };
