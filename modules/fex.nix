@@ -1,6 +1,30 @@
 { pkgs, ... }:
 
 let
+  # FEX's build scripts (aarch64_fit_native.py, InstallFEX.py) do
+  #   try:    from packaging.version import Version
+  #   except: from pkg_resources import parse_version
+  # nixpkgs only puts setuptools in the build's python env, and on Python 3.14
+  # setuptools no longer exposes pkg_resources, so BOTH imports fail and CMake
+  # aborts at CMakeLists.txt:494 (`string(STRIP)` on empty output). Prepend a
+  # python env that also has packaging so the first import branch succeeds (it's
+  # first on PATH, so find_package(Python) resolves to it). Applied as an overlay
+  # so muvm (which builds against pkgs.fex) picks up the fixed derivation too.
+  fexOverlay = final: prev: {
+    fex = prev.fex.overrideAttrs (old: {
+      nativeBuildInputs = [
+        (final.python3.withPackages (
+          ps: with ps; [
+            setuptools
+            libclang
+            packaging
+          ]
+        ))
+      ]
+      ++ old.nativeBuildInputs;
+    });
+  };
+
   # Upstream fixed the dmabuf bug (b/441537635) in CL 6941981, merged 2025-09-17.
   # nixpkgs sommelier is still stuck at v126.0 and marked broken; bump to current
   # platform2 main HEAD (commit 6b613ac5, 2026-06-19) for the fix + ongoing fixes.
@@ -39,6 +63,8 @@ let
   '';
 in
 {
+  nixpkgs.overlays = [ fexOverlay ];
+
   boot.kernelModules = [ "kvm" ];
 
   # Register qemu-user binfmt for x86_64 so Nix can locally build x86_64
