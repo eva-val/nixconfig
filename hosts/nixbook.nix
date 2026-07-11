@@ -21,6 +21,8 @@
     ../modules/keybindings.nix
     ../modules/stylix.nix
     ../modules/user.nix
+    ../modules/can.nix
+    ../modules/netcap.nix
   ];
 
   networking.hostName = hostname;

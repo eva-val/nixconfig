@@ -45,6 +45,7 @@
     nload
     speedtest-cli
     openssl
+    can-utils # cansend, candump, etc. (SocketCAN)
 
     # Development toolchains
     clang

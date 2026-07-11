@@ -37,6 +37,7 @@
     jq
     gh
     claude-code
+    codex
     fastfetch
     obsidian
     kicad
