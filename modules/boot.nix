@@ -1,6 +1,9 @@
 { ... }:
 
 {
+  # Apple Silicon / Asahi support (explicit to avoid the deprecated implicit default)
+  hardware.asahi.enable = true;
+
   # Systemd-boot EFI boot loader
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
@@ -10,7 +13,10 @@
   boot.extraModprobeConfig = ''
     options hid_apple iso_layout=0
   '';
-  boot.kernelParams = [ "hid_apple.swap_fn_leftctrl=1" ];
+  boot.kernelParams = [
+    "hid_apple.swap_fn_leftctrl=1"
+    "appledrm.show_notch=1"
+  ];
 
   # Asahi kernel uses 16K pages (CONFIG_ARCH_MMAP_RND_BITS_MAX=31), but
   # nixpkgs can't introspect the Asahi kernel config and defaults to 33,

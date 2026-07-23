@@ -55,7 +55,6 @@
 
     # Desktop / app
     wl-clipboard
-    openscad-unstable
     jetbrains.rust-rover
     bolt-launcher
   ];
@@ -81,6 +80,10 @@
   nix = {
     settings = {
       auto-optimise-store = true;
+      # Fanless laptop — cap build parallelism to avoid thermal throttling.
+      # Peak load ≈ max-jobs × cores; keep it well under the 8 cores.
+      max-jobs = 2;
+      cores = 2;
       trusted-users = [
         "root"
         username

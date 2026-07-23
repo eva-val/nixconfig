@@ -3,6 +3,9 @@
 {
   networking.networkmanager.enable = true;
 
+  # TEMPORARY: disable all NixOS firewall filtering.
+  networking.firewall.enable = false;
+
   # Automatic timezone via geolocation
   services.automatic-timezoned.enable = true;
 
