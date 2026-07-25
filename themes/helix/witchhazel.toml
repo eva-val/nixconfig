@@ -1,0 +1,153 @@
+attribute = "scotchbroom"
+comment = "smoke"
+"constant.numeric" = "scotchbroom"
+"diff.delta" = "carolina"
+"diff.minus" = "peony"
+"diff.plus" = "fern"
+error = "peony"
+function = "aster"
+hint = "fern"
+info = "scotchbroom"
+keyword = "fern"
+"markup.heading" = "scotchbroom"
+"markup.raw" = "scotchbroom"
+operator = "fern"
+"punctuation.delimiter" = "fern"
+string = "carolina"
+tag = "peony"
+"type.builtin" = "fern"
+"ui.cursor.match" = "carolina"
+"ui.gutter" = "stone"
+"ui.text" = "bone"
+"ui.virtual" = "stone"
+variable = "bone"
+"variable.parameter" = "peony"
+warning = "carolina"
+
+[constant]
+fg = "aster"
+modifiers = ["bold"]
+
+[diagnostic]
+bg = "iris"
+
+["diagnostic.error".underline]
+color = "peony"
+style = "curl"
+
+["diagnostic.hint".underline]
+color = "fern"
+style = "curl"
+
+["diagnostic.info".underline]
+color = "scotchbroom"
+style = "curl"
+
+["diagnostic.warning".underline]
+color = "carolina"
+style = "curl"
+
+["keyword.storage.modifier"]
+fg = "sound"
+modifiers = ["italic"]
+
+["keyword.storage.type"]
+fg = "fern"
+modifiers = ["italic"]
+
+["markup.link.url"]
+fg = "fern"
+modifiers = ["bold"]
+
+[palette]
+aster = "#c5a3ff"
+bone = "#f8f8f0"
+carolina = "#81eeff"
+cloud = "#c6c4cc"
+fern = "#81ffbe"
+gloom = "#131218"
+iris = "#282634"
+nightshade = "#8077a8"
+peony = "#ffb8d1"
+purple = "#433e56"
+scotchbroom = "#fff9a3"
+scum = "#64cb96"
+smoke = "#bfbfbf"
+sound = "#46becb"
+stone = "#8a8a8a"
+thistle = "#8864cb"
+
+["ui.background"]
+bg = "iris"
+
+["ui.cursor"]
+bg = "bone"
+fg = "gloom"
+
+["ui.cursor.insert"]
+bg = "fern"
+
+["ui.cursor.normal"]
+bg = "bone"
+fg = "gloom"
+
+["ui.cursorcolumn.primary"]
+bg = "gloom"
+
+["ui.cursorcolumn.secondary"]
+bg = "smoke"
+
+["ui.cursorline.primary"]
+bg = "gloom"
+
+["ui.cursorline.secondary"]
+bg = "smoke"
+
+["ui.gutter.selected"]
+bg = "gloom"
+fg = "cloud"
+
+["ui.help"]
+bg = "purple"
+fg = "cloud"
+
+["ui.highlight"]
+bg = "iris"
+fg = "bone"
+
+["ui.menu"]
+bg = "purple"
+fg = "cloud"
+
+["ui.menu.selected"]
+bg = "scum"
+fg = "gloom"
+
+["ui.popup"]
+bg = "purple"
+fg = "cloud"
+
+["ui.selection"]
+bg = "nightshade"
+
+["ui.statusline"]
+bg = "thistle"
+fg = "bone"
+
+["ui.statusline.insert"]
+bg = "fern"
+fg = "gloom"
+
+["ui.statusline.normal"]
+bg = "thistle"
+fg = "bone"
+
+["ui.statusline.select"]
+modifiers = ["reversed"]
+
+["ui.virtual.ruler"]
+bg = "gloom"
+
+["ui.window"]
+bg = "purple"
+fg = "cloud"
