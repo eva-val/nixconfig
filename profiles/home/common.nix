@@ -31,6 +31,7 @@
     gh
     nix-index
     fastfetch
+    fireconnect
     inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.codex-cli.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

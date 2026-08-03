@@ -12,6 +12,11 @@ in
     pkgs = final;
   };
 
+  fireconnect = import ../packages/fireconnect.nix {
+    inherit (final) lib;
+    pkgs = final;
+  };
+
   muvm-bambu-studio = import ../packages/muvm-bambu-studio.nix {
     inherit muvmSupport;
   };
