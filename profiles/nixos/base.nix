@@ -55,6 +55,7 @@
 
     # Machine administration and network diagnostics.
     powertop
+    usbutils
     nmap
     inetutils
     mtr
