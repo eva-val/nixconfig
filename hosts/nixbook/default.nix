@@ -15,6 +15,7 @@
     ../../modules/nixos/networking.nix
     ../../modules/nixos/wluma.nix
     ../../modules/nixos/can.nix
+    ../../modules/nixos/probe-rs.nix
     ../../modules/nixos/pynet.nix
     ../../modules/nixos/apps/android-studio.nix
     ../../modules/nixos/apps/bambu-studio.nix

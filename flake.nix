@@ -94,6 +94,7 @@
         networking = import ./modules/nixos/networking.nix;
         wluma = import ./modules/nixos/wluma.nix;
         can = import ./modules/nixos/can.nix;
+        probe-rs = import ./modules/nixos/probe-rs.nix;
         pynet = import ./modules/nixos/pynet.nix;
         fex = import ./modules/nixos/fex.nix;
         android-studio = import ./modules/nixos/apps/android-studio.nix;
