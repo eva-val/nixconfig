@@ -38,7 +38,22 @@ _:
     };
   };
 
-  services.logind.settings.Login.HandleSuspendKey = "ignore";
+  # The Asahi xHCI controllers can lose their root hubs across s2idle, which
+  # interrupts attached bench hardware until it is physically reconnected.
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = false;
+    AllowHibernation = false;
+    AllowSuspendThenHibernate = false;
+    AllowHybridSleep = false;
+  };
+
+  services.logind.settings.Login = {
+    HandleSuspendKey = "ignore";
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+    IdleAction = "ignore";
+  };
   zramSwap.enable = true;
 
 }
