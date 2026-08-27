@@ -38,6 +38,7 @@ let
   ];
 
   ip = "/run/current-system/sw/bin/ip";
+  usbreset = "/run/current-system/sw/bin/usbreset";
   storeIp = "${pkgs.iproute2}/bin/ip";
 
   renameInterface =
@@ -85,7 +86,10 @@ let
 in
 {
   users.users.${hostSpec.username}.extraGroups = [ "dialout" ];
-  environment.systemPackages = [ pkgs.can-utils ];
+  environment.systemPackages = [
+    pkgs.can-utils
+    pkgs.usbutils
+  ];
 
   # Stable names preserve the physical PEAK 0 <-> snoof 0 and PEAK 1 <->
   # snoof 1 pairing regardless of USB probe order. The snoof match is pinned
@@ -100,10 +104,17 @@ in
 
   # Permit only the declared profiles and link state changes without granting
   # unrestricted `ip`, whose namespace commands can execute programs as root.
+  # The exact snoof serial is also allowed through usbreset for bounded USB
+  # lifecycle fault injection without access to any other USB device.
   security.sudo.extraRules = [
     {
       users = [ hostSpec.username ];
-      commands = lib.concatMap passwordlessCanCommands canDevices;
+      commands = lib.concatMap passwordlessCanCommands canDevices ++ [
+        {
+          command = "${usbreset} SN:68EE8F5B3E44";
+          options = [ "NOPASSWD" ];
+        }
+      ];
     }
   ];
 }
