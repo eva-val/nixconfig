@@ -48,6 +48,7 @@ let
     device:
     "bitrate 500000 sample-point 0.8"
     + lib.optionalString device.fd " dbitrate 2000000 dsample-point 0.8 fd on"
+    + " cc-len8-dlc on"
     + lib.optionalString device.autoRestart " restart-ms 100";
 
   configureInterface =
@@ -92,7 +93,9 @@ in
   services.udev.extraRules = lib.concatMapStringsSep "\n" renameInterface canDevices;
 
   # Configure after udev has completed each rename. PEAK 0/1 and snoof 0 use
-  # CAN-FD; snoof 1 uses classic CAN with the same arbitration bitrate.
+  # CAN-FD; snoof 1 uses classic CAN with the same arbitration bitrate. Keep
+  # raw Classical CAN DLC values 9..15 so the bench exercises the legal
+  # CC_LEN8_DLC path instead of silently normalizing them to DLC 8.
   systemd.services = lib.listToAttrs (map configureInterface canDevices);
 
   # Permit only the declared profiles and link state changes without granting
